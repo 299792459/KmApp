@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <!--底部菜单-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/indexbutton"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="地区广场"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="154dp" />
+
+        <Button
+            android:id="@+id/scenerybutton"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="风景详情"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="154dp" />
+
+        <Button
+            android:id="@+id/personalzonebutton"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:text="个人空间"
+            tools:layout_editor_absoluteX="148dp"
+            tools:layout_editor_absoluteY="154dp" />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

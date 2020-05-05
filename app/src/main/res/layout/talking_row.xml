@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 定义ListView每行数据的显示布局 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="fill_parent" android:layout_height="100dp">
+
+
+	<ImageView
+		android:id="@+id/imageViewtalk"
+		android:layout_width="74dp"
+		android:layout_height="67dp"
+		android:layout_alignParentStart="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginStart="1dp"
+		android:layout_marginLeft="1dp"
+		android:layout_marginTop="3dp" />
+
+    <TextView
+        android:id="@+id/usernameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginBottom="58dp"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:focusable="true" android:text="TextView" />
+
+    <TextView
+        android:id="@+id/replyusernameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="172dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:focusable="true" android:text="TextView" />
+
+	<TextView
+		android:id="@+id/replytimeTV"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignTop="@+id/usernameTV"
+		android:layout_alignParentStart="true"
+		android:layout_alignParentLeft="true"
+		android:layout_marginStart="250dp"
+		android:layout_marginLeft="250dp"
+		android:layout_marginTop="-14dp"
+		android:text="TextView" />
+
+	<TextView
+		android:id="@+id/replycontentTV"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_above="@+id/replytimeTV"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginEnd="273dp"
+		android:layout_marginRight="273dp"
+		android:layout_marginBottom="-68dp"
+		android:text="TextView" />
+
+	<TextView
+		android:id="@+id/otherTV"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignBottom="@+id/replyusernameTV"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginEnd="76dp"
+		android:layout_marginRight="76dp"
+		android:layout_marginBottom="-18dp"
+		android:visibility="visible"
+		android:text="TextView" />
+
+</RelativeLayout>

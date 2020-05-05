@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:clipChildren="false"
+        android:orientation="vertical">
+
+        <!--主页显示行-->
+        <ScrollView
+            android:id="@+id/sv"
+            android:layout_width="match_parent"
+            android:layout_height="520dp"
+            android:clipChildren="false">
+
+            <LinearLayout
+                android:id="@+id/svc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <!--景点数据显示行-->
+                <!--景点图片显示行-->
+                <ImageView
+                    android:id="@+id/sceneryimageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true" />
+
+                <!--景点信息显示行-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <!--景点名称显示行-->
+                    <TextView
+                        android:id="@+id/scenerynameTV1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="景点名称"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                    <!--景点地址显示行-->
+                    <TextView
+                        android:id="@+id/scenerylocationTV1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="地址" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <!--查看更多信息按钮-->
+                    <Button
+                        android:id="@+id/bookbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="预约出行" />
+                    <!--查看更多信息按钮-->
+                    <Button
+                        android:id="@+id/commentbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="发表评论" />
+                </LinearLayout>
+
+                <!--景点介绍显示行-->
+                <!--用户评论数据显示行-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center"
+                        android:orientation="vertical">
+
+                        <!--用户头像显示行-->
+                        <ImageView
+                            android:id="@+id/userimageView1"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1" />
+                        <!--用户名显示行-->
+                        <TextView
+                            android:id="@+id/usernameTV1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="用户名" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center"
+                        android:orientation="vertical">
+
+                        <!--用户评论显示行-->
+                        <TextView
+                            android:id="@+id/usercommentTV1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="评论内容" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|center"
+                            android:orientation="horizontal">
+                            <!--用户评论时间显示行-->
+                            <TextView
+                                android:id="@+id/usercommenttimeTV1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="评论时间" />
+                            <!--查看更多信息按钮-->
+                            <Button
+                                android:id="@+id/getmorereplybutton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:text="查看更多" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--用户回复数据显示行-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center"
+                        android:orientation="vertical">
+
+                        <!--用户头像显示行-->
+                        <ImageView
+                            android:id="@+id/userimageView2"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+ />
+                        <!--用户名显示行-->
+                        <TextView
+                            android:id="@+id/usernameTV2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="用户名" />
+
+                        <!--用户名显示行-->
+                        <TextView
+                            android:id="@+id/replyusernameTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="回复用户:" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center"
+                        android:orientation="vertical">
+
+                        <!--用户评论显示行-->
+                        <TextView
+                            android:id="@+id/replycontentTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="回复内容" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="left|center"
+                            android:orientation="horizontal">
+                            <!--用户评论时间显示行-->
+                            <TextView
+                                android:id="@+id/replytimeTV2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="回复时间" />
+                            <!--查看更多信息按钮-->
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!--分页-->
+        <include layout="@layout/pagemenu"/>
+        <!--功能菜单-->
+        <include layout="@layout/bottommenu" />
+
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
