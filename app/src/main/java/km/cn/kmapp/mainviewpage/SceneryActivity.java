@@ -88,6 +88,7 @@ public class SceneryActivity extends Activity {
     //DTO
     sceneryDiscationDTO sceneryDiscationDTO = new sceneryDiscationDTO();
 
+    int talkmainuserid=0;
     //网络地址
     String apis="";
     //标志位
@@ -199,6 +200,8 @@ public class SceneryActivity extends Activity {
                 addIntent.putExtra("talktype","comment");
                 addIntent.putExtra("userinfojson",userinfojson);
                 addIntent.putExtra("userid",Ouserid);
+                addIntent.putExtra("talkmainuserid",talkmainuserid);
+
                 // 3-6-2:因为添加完之后要返回列表界面的，所以使用带返回的跳转方式
                 startActivityForResult(addIntent, 1);
             }
@@ -504,7 +507,7 @@ public class SceneryActivity extends Activity {
         usercommentTV1.setText(c1.getCommentcontent());
         //介绍
         usercommenttimeTV1.setText(c1.getCommenttime());
-
+        talkmainuserid=c1.getUserid();
         //回复
         List<reply> listr1=sceneryDiscationDTO.getReplyListMap().get(String.valueOf(c1.getCommentid()));
         if(listr1==null){

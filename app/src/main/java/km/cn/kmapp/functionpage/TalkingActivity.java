@@ -22,11 +22,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 import km.cn.kmapp.R;
 import km.cn.kmapp.dao.dto.indexMainInfoDTO;
@@ -61,6 +64,7 @@ public class TalkingActivity extends ListActivity {
     int isok=0;
     NetConnectUtils ncuinstance = new NetConnectUtils();
     reply replyinfo=new reply();
+    List<reply> replyList=new LinkedList<>();
     String talktip="发表成功";
     //定义界面传输值
     int Ouserid;
@@ -71,7 +75,7 @@ public class TalkingActivity extends ListActivity {
 
     int replyuserid=0;
     int userid=0;
-    int talkmainuserid;
+    int talkmainuserid=0;
     /*定义一个动态数组*/
     ArrayList<HashMap<String, Object>> listItem = new ArrayList<HashMap<String,Object>>();
 
@@ -269,30 +273,33 @@ public class TalkingActivity extends ListActivity {
             }.execute();
         }
         //处理返回值
-        while (isok==0){}
+        while (isok==0){
+            //打印测试
+            Log.v("debug", "等待数据返回");
+        }
         isok=0;
         jsoncasttojavaclass();
 
         //空处理
-        if(replyinfo==null||(replyinfo.getReplyid()<1)){
+        if(replyList==null||(replyList.size()<1)){
             return;
         }
-        userid = replyinfo.getUserid();
-        replyuserid = replyinfo.getReplyuserid();
-        //填充数据
 
-        /*在数组中存放数据*/
-        for(int i=0;i<10;i++)
-        {
-            HashMap<String, Object> map = new HashMap<String, Object>();
-            map.put("userimage", R.mipmap.ic_launcher);//加入图片
-            map.put("username", getusernamebyid(replyinfo.getUserid()));
-            map.put("replyusername", getusernamebyid(replyinfo.getReplyuserid()));
-            map.put("replytime", replyinfo.getReplytime());
-            map.put("other", replyinfo.getUserid());
-            map.put("replycontent", replyinfo.getReplycontent());
-            listItem.add(map);
+        for (int i=0;i<replyList.size();i++){
+            //填充数据
+
+            /*在数组中存放数据*/
+                HashMap<String, Object> map = new HashMap<String, Object>();
+                map.put("userimage", R.mipmap.ic_launcher);//加入图片
+                map.put("username", getusernamebyid(replyList.get(i).getUserid()));
+                map.put("replyusername", getusernamebyid(replyList.get(i).getReplyuserid()));
+                map.put("replytime", replyList.get(i).getReplytime());
+                map.put("other", replyList.get(i).getUserid());
+                map.put("replycontent", replyList.get(i).getReplycontent());
+                listItem.add(map);
         }
+
+
         SimpleAdapter mSimpleAdapter = new SimpleAdapter(this,listItem,//需要绑定的数据
                 R.layout.talking_row,//每一行的布局
                 //动态数组中的数据源的键对应到定义布局的View中
@@ -377,13 +384,16 @@ public class TalkingActivity extends ListActivity {
         try {
             //打印测试
             Log.v("debug", "准备处理数据");
-            //如果连接成功，用json对象接受返回的数据
-            JSONObject replyinfojson=(JSONObject)NMR.getContent();
-            //利用反射，将jsonobject映射成java类
-            replyinfo = JSON.toJavaObject(replyinfojson,reply.class);
-
             //打印测试
-            Log.v("debug", replyinfojson.toString());
+            Log.v("debug", "数据位："+NMR.getContent().toString());
+            //如果连接成功，用json对象接受返回的数据
+
+            JSONArray replyinfojsonarr = (JSONArray)NMR.getContent();
+            //打印测试
+            Log.v("debug", "jsonshujuwei："+replyinfojsonarr.toString());
+            //利用反射，将jsonobject映射成java类
+            replyList= JSONObject.parseArray(replyinfojsonarr.toJSONString(), reply.class);
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -392,7 +402,10 @@ public class TalkingActivity extends ListActivity {
 
     String getusernamebyid(int userid){
         // 先拼接api
-        apis="/pz/getUserNameById"+userid;
+        apis="/pz/getUserNameById?userid="+userid;
+        //打印测试
+        Log.v("debug", "useridwei "+userid);
+
         //打开网络连接
         new AsyncTask(){
             @Override
@@ -405,7 +418,7 @@ public class TalkingActivity extends ListActivity {
                     Log.v("debug", apis);
                     NMR =  ncuinstance.urlGet(apis);
                     //打印测试
-                    Log.v("debug", "接口调用完毕");
+                    Log.v("debug", NMR.toString());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }finally {
@@ -415,19 +428,17 @@ public class TalkingActivity extends ListActivity {
             }
         }.execute();
         //循环等待线程处理完毕
-        while (isok==0){}
-        isok=0;
-        //处理返回数据
-        JSONObject usernamejson=(JSONObject)NMR.getContent();
-        if(usernamejson==null){
-            return "";
+        while (isok==0){
+            //打印测试
+            Log.v("debug", "dengdaizhong");
         }
+        isok=0;
         //打印测试
-        //Log.v("debug", maininfojson.toString());
-        //解析json对象，取出数据放入内存
-        //利用反射，将jsonobject映射成java类
-        String username = JSON.toJavaObject(usernamejson,String.class);
-        return username;
+        //Log.v("debug", NMR.getContent());
+        if(NMR.getContent()==null){
+            return " ";
+        }
+        return (String) NMR.getContent();
     }
 
     public int getidbyposion(int poi){

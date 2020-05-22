@@ -17,7 +17,7 @@
         <ScrollView
             android:id="@+id/sv"
             android:layout_width="match_parent"
-            android:layout_height="520dp"
+            android:layout_height="414dp"
             android:clipChildren="false">
 
             <LinearLayout
@@ -162,8 +162,7 @@
                             android:id="@+id/userimageView2"
                             android:layout_width="100dp"
                             android:layout_height="100dp"
-                            android:layout_weight="1"
- />
+                            android:layout_weight="1" />
                         <!--用户名显示行-->
                         <TextView
                             android:id="@+id/usernameTV2"

@@ -533,7 +533,7 @@ public class PersonalZoneActivity extends Activity {
 
     String getusernamebyid(int userid){
         // 先拼接api
-        apis="/pz/getUserNameById"+userid;
+        apis="/pz/getUserNameById?userid="+userid;
         //打开网络连接
         new AsyncTask(){
             @Override
@@ -546,7 +546,7 @@ public class PersonalZoneActivity extends Activity {
                     Log.v("debug", apis);
                     NMR =  ncuinstance.urlGet(apis);
                     //打印测试
-                    Log.v("debug", "接口调用完毕");
+                    Log.v("debug", NMR.toString());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }finally {
@@ -556,19 +556,14 @@ public class PersonalZoneActivity extends Activity {
             }
         }.execute();
         //循环等待线程处理完毕
-        while (isok==0){}
-        isok=0;
-        //处理返回数据
-        JSONObject usernamejson=(JSONObject)NMR.getContent();
-        if(usernamejson==null){
-            return "";
+        while (isok==0){
+            //打印测试
+            Log.v("debug", "dengdaizhong");
         }
+        isok=0;
         //打印测试
-        //Log.v("debug", maininfojson.toString());
-        //解析json对象，取出数据放入内存
-        //利用反射，将jsonobject映射成java类
-        String username = JSON.toJavaObject(usernamejson,String.class);
-        return username;
+        Log.v("debug", (String) NMR.getContent());
+        return (String) NMR.getContent();
     }
 
 

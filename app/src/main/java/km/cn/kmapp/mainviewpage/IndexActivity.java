@@ -235,7 +235,10 @@ public class IndexActivity extends Activity {
                 Intent addIntent=new Intent("action_personalzone");
                 //跳转到个人页的时候，附带传递userinfo
                 addIntent.putExtra("userinfojson",userinfojson);
+                //打印测试
+                Log.v("debug", "indexuserid:"+Ouserid);
                 addIntent.putExtra("userid",Ouserid);
+                addIntent.putExtra("pzuserid",Ouserid);
                 // 3-6-2:因为添加完之后要返回列表界面的，所以使用带返回的跳转方式
                 startActivityForResult(addIntent, 1);
             }

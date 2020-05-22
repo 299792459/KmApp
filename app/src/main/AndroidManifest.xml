@@ -85,6 +85,14 @@
             </intent-filter>
         </activity>
 
+        <!-- 个人主页 -->
+        <activity android:name=".functionpage.selfInfoActivity" android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="action_selfInfo" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <!-- 注册页面 -->
         <activity android:name=".functionpage.RegistActivity" android:label="@string/app_name">
             <intent-filter>
